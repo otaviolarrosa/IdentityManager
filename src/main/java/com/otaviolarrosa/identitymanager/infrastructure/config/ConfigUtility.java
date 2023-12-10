@@ -1,4 +1,4 @@
-package com.otaviolarrosa.identitymanager.commons.config;
+package com.otaviolarrosa.identitymanager.infrastructure.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

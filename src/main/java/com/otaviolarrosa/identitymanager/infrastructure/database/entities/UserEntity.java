@@ -1,6 +1,7 @@
-package com.otaviolarrosa.identitymanager.user.create;
+package com.otaviolarrosa.identitymanager.infrastructure.database.entities;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ public class UserEntity implements Serializable {
     private String lastName;
     private String email;
     private String password;
+    private UUID userCode;
     
     public Long getId() {
         return id;
@@ -61,4 +63,12 @@ public class UserEntity implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public UUID getUserCode() {
+		return userCode;
+	}
+
+	public void setUserCode(UUID userCode) {
+		this.userCode = userCode;
+	}
 }

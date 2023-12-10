@@ -1,14 +1,21 @@
-package com.otaviolarrosa.identitymanager.user.create;
+package com.otaviolarrosa.identitymanager.application.user.create;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.otaviolarrosa.identitymanager.commons.api.ApiResultBase;
-import com.otaviolarrosa.identitymanager.commons.primitives.EmailUtils;
-import com.otaviolarrosa.identitymanager.commons.primitives.StringUtils;
+import com.otaviolarrosa.identitymanager.domain.utils.EmailUtils;
+import com.otaviolarrosa.identitymanager.domain.utils.ObjectUtils;
+import com.otaviolarrosa.identitymanager.domain.utils.StringUtils;
+import com.otaviolarrosa.identitymanager.infrastructure.database.entities.UserEntity;
+import com.otaviolarrosa.identitymanager.infrastructure.database.repositories.UserRepository;
 
 @Service
 public class CreateUserValidator {
-	public ApiResultBase validate(CreateUserInput input) {
+	
+	@Autowired
+	public UserRepository userRepository;
+	
+	public CreateUserResult validate(CreateUserInput input) {
 		CreateUserResult result = new CreateUserResult();
 		
 		//firstName
@@ -43,7 +50,11 @@ public class CreateUserValidator {
 			result.AddError(String.format("email have invalid format."));
 		}
 		
-		
+		UserEntity userEntityByEmail = userRepository.findByEmail(email);
+		if(ObjectUtils.isNotNull(userEntityByEmail)) {
+			result.AddError(String.format("User with email %s already registered.", userEntityByEmail.getEmail()));
+		}
+				
 		//password
 		String password = input.getPassword();
 		if(StringUtils.StringIsNullOrEmptyOrWhitespace(password)) {

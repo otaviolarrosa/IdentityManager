@@ -1,4 +1,4 @@
-package com.otaviolarrosa.identitymanager.commons.primitives;
+package com.otaviolarrosa.identitymanager.domain.utils;
 
 public class StringUtils {
 	public static boolean StringIsNullOrEmptyOrWhitespace(String str) {

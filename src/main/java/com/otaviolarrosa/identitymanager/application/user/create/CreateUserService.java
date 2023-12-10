@@ -1,10 +1,13 @@
-package com.otaviolarrosa.identitymanager.user.create;
+package com.otaviolarrosa.identitymanager.application.user.create;
+
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.otaviolarrosa.identitymanager.commons.api.ApiResultBase;
-import com.otaviolarrosa.identitymanager.commons.encryption.Encryption;
+import com.otaviolarrosa.identitymanager.infrastructure.database.entities.UserEntity;
+import com.otaviolarrosa.identitymanager.infrastructure.database.repositories.UserRepository;
+import com.otaviolarrosa.identitymanager.infrastructure.encryption.Encryption;
 
 @Service
 public class CreateUserService {
@@ -18,8 +21,8 @@ public class CreateUserService {
 	@Autowired
 	private Encryption encryptor;
 	
-	public ApiResultBase handleExecution(CreateUserInput createUserInput) {
-		ApiResultBase result = new CreateUserResult();
+	public CreateUserResult handleExecution(CreateUserInput createUserInput) {
+		CreateUserResult result = new CreateUserResult();
 		result = validator.validate(createUserInput);
 		if(!result.getIsValid()) {
 			return result;
@@ -33,8 +36,11 @@ public class CreateUserService {
 		String password = encryptor.encrypt(createUserInput.getPassword());
 		entity.setPassword(password);
 		
-		userRepository.save(entity);
+		UUID userCode = java.util.UUID.randomUUID();
+		entity.setUserCode(userCode);
 		
+		userRepository.save(entity);
+		result.setUserCode(userCode);
 		return result;
 	}
 }

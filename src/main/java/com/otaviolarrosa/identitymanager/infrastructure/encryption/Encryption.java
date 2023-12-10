@@ -1,4 +1,4 @@
-package com.otaviolarrosa.identitymanager.commons.encryption;
+package com.otaviolarrosa.identitymanager.infrastructure.encryption;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -12,7 +12,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.otaviolarrosa.identitymanager.commons.config.ConfigUtility;
+import com.otaviolarrosa.identitymanager.infrastructure.config.ConfigUtility;
 
 import javax.crypto.spec.PBEKeySpec;
 

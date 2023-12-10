@@ -1,4 +1,4 @@
-package com.otaviolarrosa.identitymanager.user.create;
+package com.otaviolarrosa.identitymanager.application.user.create;
 
 public class CreateUserInput {
     private String firstName;

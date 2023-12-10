@@ -1,4 +1,4 @@
-package com.otaviolarrosa.identitymanager.commons.api;
+package com.otaviolarrosa.identitymanager.api.commons;
 
 import java.util.ArrayList;
 import java.util.List;

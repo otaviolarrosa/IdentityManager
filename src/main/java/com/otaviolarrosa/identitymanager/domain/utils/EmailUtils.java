@@ -1,4 +1,4 @@
-package com.otaviolarrosa.identitymanager.commons.primitives;
+package com.otaviolarrosa.identitymanager.domain.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
