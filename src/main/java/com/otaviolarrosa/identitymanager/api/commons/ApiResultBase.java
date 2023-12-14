@@ -17,7 +17,7 @@ public class ApiResultBase {
         this.errors = errors;
     }
 
-    public boolean getIsValid() {
+    public boolean isValid() {
         return getErrors().isEmpty();
     }
     

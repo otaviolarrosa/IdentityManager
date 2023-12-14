@@ -32,7 +32,7 @@ public class UserController {
 		CreateUserResult result = new CreateUserResult();		
 		try {
 			result = createUserService.handleExecution(createUserInput);
-			if(result.getIsValid()) {
+			if(result.isValid()) {
 				return new ResponseEntity<>(result, HttpStatus.OK);
 			}
 			else {
@@ -48,7 +48,7 @@ public class UserController {
 		ApiResultBase result = new GetUserResult();		
 		try {
 			result = getUserService.handleExecution(userCode);
-			if(result.getIsValid()) {
+			if(result.isValid()) {
 				return new ResponseEntity<>(result, HttpStatus.OK);
 			}
 			else {

@@ -8,4 +8,8 @@ public class StringUtils {
 	public static boolean HasMinimumLenght(String str, int minimunLenght) {
 		return str.length() >= minimunLenght;
 	}
+	
+	public static boolean HasMaximumLenght(String str, int minimunLenght) {
+		return str.length() <= minimunLenght;
+	}
 }

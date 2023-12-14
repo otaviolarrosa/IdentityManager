@@ -24,7 +24,7 @@ public class CreateUserService {
 	public CreateUserResult handleExecution(CreateUserInput createUserInput) {
 		CreateUserResult result = new CreateUserResult();
 		result = validator.validate(createUserInput);
-		if(!result.getIsValid()) {
+		if(!result.isValid()) {
 			return result;
 		}
 		
